@@ -1,0 +1,435 @@
+/* ========== Base ========== */
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--accent:#2b7a78;--muted:#666;--bg:#fafafa;--card:#fff}
+body{font-family:Inter,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial,sans-serif;background:var(--bg);color:#111;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+
+/* ========== Navbar ========== */
+.navbar{position:fixed;left:0;right:0;top:0;background:#fff;box-shadow:0 2px 6px rgba(10,10,10,.06);z-index:1200}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.logo{font-weight:800;font-size:1.15rem;color:var(--accent)}
+.desktop-nav ul{list-style:none;display:flex;gap:18px}
+.desktop-nav a{padding:8px 10px;border-radius:6px;color:var(--muted);font-weight:600}
+.desktop-nav a.active, .desktop-nav a:hover{background:rgba(43,122,120,.08);color:var(--accent)}
+
+/* menu toggle for mobile */
+.menu-toggle{display:none;background:transparent;border:0;font-size:1.1rem}
+@media(max-width:860px){.desktop-nav{display:none}.menu-toggle{display:block}}
+
+/* side drawer */
+.side-drawer{position:fixed;top:0;right:-320px;height:100vh;width:320px;background:#fff;box-shadow:-8px 0 24px rgba(12,12,12,.12);z-index:1300;padding:24px;transition:right .32s ease}
+.side-drawer.open{right:0}
+.close-drawer{background:transparent;border:0;font-size:2rem;position:absolute;top:10px;right:14px}
+.mobile-nav ul{list-style:none;margin-top:40px;display:flex;flex-direction:column;gap:14px}
+.mobile-nav a{font-weight:700;font-size:1.05rem;color:#222}
+
+/* drawer overlay */
+.drawer-overlay{position:fixed;inset:0;background:rgba(0,0,0,.35);opacity:0;pointer-events:none;transition:opacity .25s ease;z-index:1250}
+.drawer-overlay.visible{opacity:1;pointer-events:auto}
+
+/* ---------- Hero ---------- */
+/* ========== Sections ========== */
+main{max-width:1100px;margin:0 auto;padding:90px 18px 60px}
+section{margin:28px 0;padding:28px;border-radius:10px;background:transparent}
+.hero{display:flex;gap:24px;align-items:center;padding:36px;background:linear-gradient(180deg,#fff,#fbfbfb);border-radius:12px}
+.hero-text h1{font-size:1.8rem;margin-bottom:12px;color:#0b4d4b}
+.hero-text p{color:var(--muted);margin-bottom:14px}
+.explore-btn{display:inline-block;padding:10px 14px;border-radius:8px;background:var(--accent);color:#fff;font-weight:700}
+
+/* ---------- Banner books ---------- */
+.banner-books{
+  display:flex;
+  gap:18px;
+  justify-content:center;
+  align-items:center;
+  padding:24px;
+  background:linear-gradient(180deg,#fff,#fcfdff);
+  border-radius:12px;
+}
+.banner-books img{width:230px;height:300px;object-fit:cover;border-radius:10px;box-shadow:var(--shadow-soft);transition:transform .25s ease}
+.banner-books img:hover{transform:translateY(-6px)}
+
+/* ---------- Featured / Cards ---------- */
+.featured{padding:30px 20px}
+.book-container{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:16px;
+  margin-top:14px;
+}
+.book-card{
+  background:var(--card);
+  padding:12px;
+  border-radius:12px;
+  box-shadow: 0 8px 20px rgba(12,18,25,0.06);
+  text-align:center;
+  transition:transform .18s ease, box-shadow .18s ease;
+}
+.book-card:hover{transform:translateY(-6px); box-shadow:0 18px 40px rgba(12,18,25,0.08)}
+.book-card img{width:100%;height:180px;object-fit:cover;border-radius:8px}
+.book-card h3{font-size:1rem;margin:10px 0;color:var(--text)}
+.book-card p{font-weight:700;color:var(--accent)}
+
+/* ---------- Products list (controls + grid) ---------- */
+.products{padding:18px}
+.controls{display:flex;gap:12px;justify-content:center;align-items:center;margin-bottom:18px}
+.controls input, .controls select{
+  padding:10px 12px;border-radius:12px;border:1px solid #eef2f7;background:#fff;min-width:180px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.6);
+}
+.product-list{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:18px;
+}
+.product-item{
+  background:var(--card);
+  border-radius:12px;
+  padding:12px;
+  text-align:center;
+  box-shadow: 0 10px 30px rgba(12,18,25,0.04);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.product-item:hover{transform:translateY(-6px); box-shadow:0 18px 40px rgba(12,18,25,0.06)}
+.product-item img{width:100%;height:260px;object-fit:cover;border-radius:10px;margin-bottom:10px}
+.product-item h3{font-size:1rem;margin:6px 0;color:var(--text)}
+.product-item p{color:var(--accent);font-weight:700}
+
+/* ---------- Modal ---------- */
+#overlay{position:fixed;inset:0;background:rgba(4,10,15,0.45);display:none;z-index:1200}
+#overlay.active{display:block}
+.modal{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%) scale(.98);width:92%;max-width:920px;background:#fff;border-radius:12px;padding:18px;box-shadow:var(--shadow-strong);z-index:1300;display:none}
+.modal.active{display:block;transform:translate(-50%,-50%) scale(1)}
+.modal-content{display:flex;gap:18px;align-items:flex-start}
+.modal-left img{width:260px;max-width:40vw;border-radius:10px}
+.modal-left{
+  float: left;
+}
+      
+.modal-right h2{margin:0 0 8px 0}
+.modal-right{
+  float: left;
+}
+.close-modal{position:absolute;right:14px;top:10px;background:transparent;border:0;font-size:22px;cursor:pointer}
+
+/* ---------- About (Paragraph + image) ---------- */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f2f2f2;
+}
+
+.container {
+    background: #fff;
+    padding: 20px;
+    font-family: monospace;
+    width: 500px;
+    box-shadow: 0 0 5px #000;
+}
+
+.head {
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.text {
+    margin: 10px 0;
+    font-family: sans-serif;
+    font-size: 0.9em;
+}
+
+.commentbox {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+.commentbox > img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    /* float: left; */
+    margin-right: 20px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.content {
+    width: 100%;
+}
+
+.user {
+    border: none;
+    outline: none;
+    margin: 5px 0;
+    color: #808080;
+    margin-left: 20px;
+    padding: 10px;
+}
+
+.commentinput > input {
+    border: none;
+    padding: 10px;
+    padding-left: 0;
+    outline: none;
+    border-bottom: 2px solid blue;
+    margin-bottom: 10px;
+    width: 95%;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #808080;
+}
+
+.buttons > button {
+    padding: 5px 10px;
+    background: lightgrey;
+    color: #808080;
+    text-transform: uppercase;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.buttons > button.abled {
+    background: blue;
+    color: #fff;
+}
+
+.policy {
+    margin: 20px 0;
+    font-size: 0.8em;
+    font-family: Arial, sans-serif;
+    color: #808080;
+}
+
+.policy a {
+    text-decoration: none;
+    color: blue;
+}
+
+.notify {
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.notify > input {
+    margin-right: 5px;
+    border: 2px solid #808080;
+}
+
+.parents {
+    font-family: Arial, sans-serif;
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.parents h1 {
+    font-size: 0.9em;
+}
+
+.parents p {
+    margin: 10px 0;
+    font-size: 0.9em;
+}
+
+.parents > img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 20px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.engagements {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.engagements img {
+    width: 20px;
+
+}
+
+.engagements img:nth-child(1) {
+    margin-right: 10px;
+    width: 25px;
+}
+
+.date {
+    color: #808080;
+    font-size: 0.8em;
+}
+
+
+/* .policy {
+    width: 100px;
+} */
+
+/* body::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #F88379;
+} */
+
+/* body::after {
+    content: "";
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    transform: skew(20deg);
+    background: #F2D2BD;
+    z-index: -1;
+} */
+
+/* 
+F88379 !IMPORTANT
+F2D2BD !IMPORTANT
+#9F2B68
+F2D2BD
+DE3163
+*/
+
+
+/* .comment {
+    width: 400px;
+    background: #fff;
+    padding: 10px;
+    border-left: 3px solid purple;
+}
+
+.comment div {
+    width: 100%;
+    margin: 20px 0;
+}
+
+.comment div input {
+    width: 100%;
+    outline: none;
+    border: none;
+}
+
+.comment div textarea {
+    width: 100%;
+    outline: none;
+    border: none;
+    resize: none;
+    font-family: Arial, sans-serif;
+}
+
+.comment div:nth-child(2) {
+    margin-bottom: 0;
+}
+
+.comment div:last-child {
+    margin: 0;
+    text-align: right;
+}
+
+.comment div button {
+    padding: 5px 15px;
+    background: purple;
+    color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.posts {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 50px;
+}
+
+.parent {
+    background: #fff;
+    padding: 10px;
+    width: 400px;
+} */
+
+/* 
+
+#36454F
+#023
+#353935
+28282B
+
+
+
+
+*/
+/* about & contact layout */
+.about-inner{display:flex;gap:18px;align-items:center}
+.about-text{flex:1}
+.about-image img{max-width:360px;border-radius:8px}
+
+/* contact form */
+.wrapper{background:#fff;padding:18px;border-radius:10px;box-shadow:0 6px 18px rgba(10,10,10,.04)}
+.input_field{margin-bottom:10px}
+.input_field input, .input_field textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #e9e9e9}
+.submitbtn input{background:var(--accent);color:#fff;padding:10px 14px;border-radius:8px;border:0;font-weight:700;cursor:pointer}
+
+/* ---------- Footer ---------- */
+footer{padding:26px;text-align:center;color:var(--muted);font-size:0.95rem}
+
+/* ---------- Scroll to top ---------- */
+#scrollTopBtn{
+  position:fixed;right:18px;bottom:18px;width:44px;height:44px;border-radius:10px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-strong);cursor:pointer;z-index:1350;opacity:0;transform:translateY(10px);transition:opacity .2s,transform .2s;
+}
+#scrollTopBtn.visible{opacity:1;transform:none}
+
+/* ---------- Reveal animations (slide-up / stagger) ---------- */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease, transform .6s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* Add slight stagger for product items */
+.product-list .product-item{transition-delay:0s}
+.product-list .product-item:nth-child(1){transition-delay:.03s}
+.product-list .product-item:nth-child(2){transition-delay:.06s}
+.product-list .product-item:nth-child(3){transition-delay:.09s}
+.product-list .product-item:nth-child(4){transition-delay:.12s}
+.product-list .product-item:nth-child(5){transition-delay:.15s}
+.product-list .product-item:nth-child(6){transition-delay:.18s}
+
+/* ---------- Responsive ---------- */
+@media(max-width:1100px){
+  .hero{flex-direction:column;padding:28px}
+  .hero-image img{max-width:360px}
+  .banner-books{flex-direction:row;flex-wrap:wrap;gap:12px;padding:18px}
+}
+@media(max-width:860px){
+  .nav-inner{gap:8px}
+  .menu-toggle{display:block}
+  nav.desktop{display:none}
+  nav ul{display:none} /* hide desktop nav on small screens; side drawer handled in JS */
+  .hero{padding:18px}
+  .product-item img{height:200px}
+  .modal-content{flex-direction:column}
+  .modal-left img{width:100%;max-width:320px}
+  .wrapper .form-inner{width:100%}
+}
+
+/* small adjustments to ensure sections don't sit flush to navbar */
+section{scroll-margin-top:110px}

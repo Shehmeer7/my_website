@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BookParadise — One Page</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="nav-inner">
+      <a href="#home" class="logo">BookParadise</a>
+      <button id="menuToggle" class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+        <i class="fa fa-bars"></i>
+      </button>
+      <nav class="desktop-nav">
+        <ul>
+          <li><a href="#home" class="nav-link" active>Home</a></li>
+          <li><a href="#products" class="nav-link">Products</a></li>
+          <li><a href="#about" class="nav-link">About Us</a></li>
+          <li><a href="#contact" class="nav-link">Contact Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- SIDE DRAWER (mobile) -->
+  <aside id="sideDrawer" class="side-drawer" aria-hidden="true">
+    <button id="closeDrawer" class="close-drawer" aria-label="Close menu">&times;</button>
+    <nav class="mobile-nav">
+      <ul>
+        <li><a href="#home" class="drawer-link">Home</a></li>
+        <li><a href="#products" class="drawer-link">Products</a></li>
+        <li><a href="#about" class="drawer-link">About Us</a></li>
+        <li><a href="#contact" class="drawer-link">Contact Us</a></li>
+      </ul>
+    </nav>
+  </aside>
+  <div id="drawerOverlay" class="drawer-overlay" aria-hidden="true"></div>
+
+  <main>
+ <!-- HOME / HERO -->
+  <section id="home" class="hero reveal">
+    <div class="hero-text">
+      <h1>Explore BookParadise <br> here</h1>
+      <p>
+        We have a huge collection of books in different fields. BookParadise offers 
+        a wide range of genres — from educational and inspirational books to novels and 
+        biographies. Whether you're a student or a book lover, BookParadise is your 
+        perfect destination to explore knowledge.
+      </p>
+      <a href="#products" class="btn explore-btn">Explore More →</a>
+    </div>
+    <div class="hero-image">
+      <img src="images/image1.png" alt="Books">
+    </div>
+  </section>
+
+
+  <!-- PRODUCTS SECTION -->
+  <section class="products" id="products">
+    <h2>Our Books</h2>
+    <div class="controls">
+      <input type="text" id="searchBox" placeholder="Search...">
+      <select id="sortSelect">
+        <option value="">Sort by</option>
+        <option value="asc">Price: Low to High</option>
+        <option value="desc">Price: High to Low</option>
+      </select>
+    </div>
+    <div id="productList" class="product-list"></div>
+  </section>
+
+
+  <!-- MODAL -->
+  <div id="overlay"></div>
+  <div class="modal" id="bookModal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <div class="modal-body">
+        <div class="modal-left">
+          <img id="modalImage" src="" alt="">
+        
+        
+          <h2 id="modalTitle"></h2>
+          <p class="price" id="modalPrice"></p>
+          <label>Quantity:</label>
+          <select id="quantitySelect">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+          </select>
+          <button class="add-cart">Add to Cart</button>
+          </div>
+          <div class="modal-right">
+           <div class="container">
+        <div class="head"><h1>Post a Comment</h1></div>
+        <div><span id="comment">0</span> Comments</div>
+        <div class="text"><p>We are happy to hear from you</p></div>
+        <div class="comments"></div>
+        <div class="commentbox">
+            <img src="user1.png" alt="">
+            <div class="content">
+                <h2>Comment as: </h2>
+                <input type="text" value="Anonymous" class="user">
+
+                <div class="commentinput">
+                    <input type="text" placeholder="Enter comment" class="usercomment">
+                    <div class="buttons">
+                        <button type="submit" disabled id="publish">Publish</button>
+                        <div class="notify">
+                            <input type="checkbox" class="notifyinput"> <span>Notify me</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="policy">This site is procted by reCAPTCHA and the Google <a href="">privacy policy</a> and <a href="">Terms of Service</a> apply.</p>
+            </div>
+        </div>
+    </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- ABOUT -->
+  <section id="about" class="about reveal">
+    <div class="about-inner">
+      <div class="about-text">
+        <h2>About BookParadise</h2>
+        <h3>"Beyond their purpose as a source of information and entertainment, books play a vital role in personal and societal development"</h3>
+        <p>We have a huge collection of books in multiple category. BookParadise offers all books at fair price and extends customer satisfaction by providing user-friendly search engine, easy payment options, and quicker delivery systems. We provide exciting offers and discounts on our books.</p>
+        <p>BookParadise is also looking to partner with all the sellers around the country. We have an affiliate program that pays a 10% commission on every sale. Anyone can join the program and be rewarded for advocacy of books. BookParadise wants to give back to everyone who promotes books, authors, and independent bookstores! We give away over 65% of our profit margin to stores, and authors who make up the inspirational culture around books!</p>
+      </div>
+      <div class="about-image">
+        <img src="images/all.avif" alt="About BookParadise">
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact reveal">
+    <div class="wrapper">
+      <h2 class="title">Contact Us</h2>
+
+      <form method="POST" action="inputdetails.php">
+        <div class="input_field">
+          <input type="text" placeholder="Name" name="name" required>
+        </div>
+        <div class="input_field">
+          <input type="text" placeholder="Subject" name="subject" >
+        </div>
+        <div class="input_field">
+          <input type="text" placeholder="Phone" name="phone" required>
+        </div>
+        <div class="input_field">
+          <input type="email" placeholder="Email" name="email" >
+        </div>
+        <div class="input_field">
+          <textarea placeholder="Message" name="message" required></textarea>
+        </div>
+        <div class="submitbtn">
+          <input type="submit" value="Send Message">
+        </div>
+      </form>
+    </div>
+  </section>
+
+
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 BookParadise | All Rights Reserved.</p>
+  </footer>
+
+  <script src="main.js"></script>
+
+</body>
+</html>
